@@ -1,9 +1,13 @@
+import { ServicioReserva } from "../services/ServicioReserva.js";
 export class ControladorReservas{
 
     constructor(){}
 
-    registrandoreserva(peticion,respuesta){
+   async registrandoreserva(peticion,respuesta){
+    let datos = peticion.body
+    let servicioReserva = new ServicioReserva()
         try{
+         await servicioReserva.registrandoreserva(datos)
             respuesta.status(200).json({
                 "mensaje": "Exito registrando los datos"
             })

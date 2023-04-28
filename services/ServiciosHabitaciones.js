@@ -5,7 +5,7 @@ export class ServiciosHabitaciones{
     
     async registrarHabitacion(datosHabitacion){
         let habitacionNueva=new modeloHabitacion(datosHabitacion)
-        return await habitacionNueva.save()
+        return await habitacionNueva.save();
     }
     async buscarTodasHabitaciones(){
         let habitacionesConsultadas = await modeloHabitacion.find()
@@ -13,10 +13,10 @@ export class ServiciosHabitaciones{
     }
 
     async buscarHabitacion(idHabitaciones){
-        let habitacionConsultada=await modeloHabitacion.findById(idHabitaciones)
+        let habitacionConsultada=await modeloHabitacion.findById(idHabitaciones);
         return habitacionConsultada
     }
     async editarHabitacion (idHabitaciones, datosHabitacion){
-        return await modeloHabitacion.findByIdAndUpdate(idHabitaciones,datosHabitacion)
+        return await modeloHabitacion.findByIdAndUpdate(idHabitaciones,datosHabitacion);
     }
 }

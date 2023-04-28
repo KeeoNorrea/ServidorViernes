@@ -8,13 +8,28 @@ export class ControladorHabitaciones{
 
         let datosHabitacion=peticion.body
         let serviciosHabitaciones=new ServiciosHabitaciones()
-        console.log(datosHabitacion)
         try{
+            if(datosHabitacion.precioNoche<100 && datosHabitacion.cantidadmaxima<2){
+                respuesta.status(400).json({
+                    "mensaje":"Revisa el precio por noche y la cantidad maxima de persona ingresada"
+                })
+            }else if(datosHabitacion.precioNoche<100){
+                respuesta.status(400).json({
+                "mensaje":"Revisa el precio por noche"
+                })
+            }else if(datosHabitacion.cantidadmaxima<2){
+                respuesta.status(400).json({
+                    "mensaje":"Muy poca gente en esta habitación"
+            })}
+        else{
             await serviciosHabitaciones.registrarHabitacion(datosHabitacion)
             respuesta.status(200).json({
                 "mensaje": "Exito agregando los datos"
             })
-        }catch(errorPeticion){
+        }
+    }
+
+        catch(errorPeticion){
             respuesta.status(400).json({
                 "mensaje":"Fallamos "+errorPeticion
             })

@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 
+const Schema = mongoose.Schema;
 
 const Reserva = new Schema({
     nombreCliente:{
@@ -14,18 +15,22 @@ const Reserva = new Schema({
         type:String,
         required:true
     },
-    fechInicio:{
-        type:Number,
+    fechaInicio:{
+        type:Date,
         required:true
     },
     fechaFinal:{
-        type:Number,
+        type:Date,
         required:true
     },
     numeroPersonas:{
         type:Number,
         required:true
+    },
+    costoReserva:{
+        type:Number,
+        default:0
     }
 })
 
-export const modeloReserva=mongoose.modelo('reserva',Reserva)
+export const modeloreserva=mongoose.model('reserva',Reserva)
